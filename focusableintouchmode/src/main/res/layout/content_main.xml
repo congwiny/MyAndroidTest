@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="search1"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusableInTouchMode="false"
+        android:hint="search2"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="search3"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="click1"
+        android:onClick="onClickBtn"
+        android:focusableInTouchMode="true"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="click2"
+        />
+
+    <!--手机能触屏，可获得焦点的控件默认都是focusable＝true.除非你主动给它设置focusable＝false;
+    button设置focusableInTouchMode＝true，第一次点击不会执行点击事件，后面就会执行了。
+    点击button后，button 的状态一直显示处于点击的效果。就是说只要触摸了此控件后，这个按钮就一直处于获得焦点的状态，
+    除非你再点击别的控件（比如editText），把button的焦点抢走,button的状态才会还原到原始状态。
+
+    如果给button 设置focusableInTouchMode＝false，和正常的按钮是一样的，可以执行click的回调方法。
+    如果给EditText设置focusableInTouchMode＝false，EditText无法获得焦点，不能输入，也不能弹出软键盘。
+    -->
+
+</LinearLayout>
