@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <com.congwiny.giftanim.view.ContinueGiftView
+        android:id="@+id/gift_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.congwiny.giftanim.view.ContinueGiftView>
+
+    <Button
+        android:id="@+id/btn_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:text="start" />
+
+    <RelativeLayout
+        android:id="@+id/car_one"
+        android:layout_width="fill_parent"
+        android:layout_height="132.0dip"
+        android:layout_centerInParent="true"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="32.0dip"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true">
+
+            <ImageView
+                android:id="@+id/car_one_redpoint"
+                android:layout_width="12.0dip"
+                android:layout_height="12.0dip"
+                android:layout_gravity="center_vertical"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/gift_common_redpoint" />
+
+            <TextView
+                android:id="@+id/room_gift_car_one_send_person"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:ellipsize="middle"
+                android:gravity="center_vertical"
+                android:shadowColor="@color/room_gift_text_shadow"
+                android:shadowDx="2.0"
+                android:shadowDy="2.0"
+                android:shadowRadius="1.0"
+                android:singleLine="true"
+                android:text="李强赠"
+                android:textColor="@android:color/white"
+                android:textSize="16.0sp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="252.0dip"
+            android:layout_height="100.0dip"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="32.0dip">
+
+            <ImageView
+                android:id="@+id/car_one_body"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/car_one" />
+
+            <RelativeLayout
+                android:id="@+id/car_one_light"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true">
+
+                <ImageView
+                    android:id="@+id/car_one_left_light"
+                    android:layout_width="124.0dip"
+                    android:layout_height="70.0dip"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="-25.0dip"
+                    android:layout_marginTop="33.0dip"
+                    android:scaleType="fitCenter"
+                    android:src="@mipmap/car_one_left_light" />
+
+                <ImageView
+                    android:id="@+id/car_one_right_light"
+                    android:layout_width="64.0dip"
+                    android:layout_height="73.0dip"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="-31.0dip"
+                    android:layout_marginTop="8.0dip"
+                    android:scaleType="fitCenter"
+                    android:src="@mipmap/car_one_right_light" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/car_one_front_wheel"
+                android:layout_width="35.0dip"
+                android:layout_height="35.0dip"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="87.0dip"
+                android:layout_marginTop="49.0dip"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/gift_common_wheel" />
+
+            <ImageView
+                android:id="@+id/car_one_back_wheel"
+                android:layout_width="32.0dip"
+                android:layout_height="32.0dip"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="210.0dip"
+                android:layout_marginTop="24.0dip"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/gift_common_wheel" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <com.congwiny.giftanim.view.HeartView
+        android:id="@+id/heart_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

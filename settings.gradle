@@ -1,1 +1,1 @@
-include ':app', ':shapedrawable', ':viewevent', ':focusableintouchmode', ':viewmeausure', ':boostshow', ':activitystart', ':mvptest', ':rxjavatest', ':materialdesign'
+include ':app', ':shapedrawable', ':viewevent', ':focusableintouchmode', ':viewmeausure', ':boostshow', ':activitystart', ':mvptest', ':rxjavatest', ':materialdesign', ':giftanim'

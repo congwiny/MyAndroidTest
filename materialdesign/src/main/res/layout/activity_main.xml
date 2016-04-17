@@ -28,4 +28,13 @@
         android:layout_centerInParent="true"
         android:text="Hello World Content!" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_content"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_toolbar"
+        android:clickable="true"
+        android:background="?android:attr/selectableItemBackground"/>
+
 </RelativeLayout>
