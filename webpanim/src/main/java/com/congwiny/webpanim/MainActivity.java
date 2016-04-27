@@ -1,5 +1,6 @@
 package com.congwiny.webpanim;
 
+import android.animation.AnimatorSet;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -11,10 +12,18 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 
+import com.congwiny.webpanim.bean.anim.AnimationEffect;
+import com.congwiny.webpanim.newbean.GiftAnimEffect;
+import com.congwiny.webpanim.newview.GiftAnimView;
+import com.congwiny.webpanim.utils.FileUtils;
+import com.congwiny.webpanim.utils.GiftAnimParser;
+import com.congwiny.webpanim.view.GiftAnimationView;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.google.gson.Gson;
 
 import java.io.File;
 
@@ -22,17 +31,44 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private SimpleDraweeView draweeView;
+    private GiftAnimationView mGiftAnimContainer;
+    private GiftAnimView mGiftAnimView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Fresco.initialize(this);
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         initView();
        // loadLocalImage();
-        loadWebpImage();
+        //loadWebpImage();
+        //goAnim();
+
+       startParseAnim();
+    }
+
+    private void startParseAnim() {
+        String animConfig = FileUtils.readFileText("/sdcard/sololive/effect/ship3/animation.json");
+        try{
+            GiftAnimEffect giftEffect = new Gson().fromJson(animConfig, GiftAnimEffect.class);
+            AnimatorSet animatorSet = GiftAnimParser.parseAnim(giftEffect, mGiftAnimView);
+            animatorSet.start();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private void goAnim() {
+        String animConfig = FileUtils.readFileText("/sdcard/sololive/effect/ship3/android_animation.json");
+        try{
+            AnimationEffect effect = new Gson().fromJson(animConfig,AnimationEffect.class);
+            mGiftAnimContainer.prepareAnim(effect);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     private void loadLocalImage() {
@@ -42,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void loadWebpImage(){
+    private void loadWebpImage(SimpleDraweeView draweeView){
         Uri imageUri= Uri.fromFile(new File("/sdcard/sololive/effect/kiss3/kiss.webp"));
         DraweeController controller = Fresco.newDraweeControllerBuilder()
                 .setUri(imageUri)
@@ -54,6 +90,9 @@ public class MainActivity extends AppCompatActivity {
         //Uri uri = Uri.parse("http://img2.hao123.com/data/1_4c873d3785714bc7cbd6a31e8140c13c_0");
         draweeView = (SimpleDraweeView) findViewById(R.id.my_image_view);
        // draweeView.setImageURI(uri);
+        mGiftAnimContainer = (GiftAnimationView) findViewById(R.id.gift_anim_container);
+
+        mGiftAnimView = (GiftAnimView) findViewById(R.id.gift_anim_view);
     }
 
     @Override
