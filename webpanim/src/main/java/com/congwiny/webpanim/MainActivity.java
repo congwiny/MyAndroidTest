@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startParseAnim() {
-        String animConfig = FileUtils.readFileText("/sdcard/sololive/effect/ship3/animation.json");
+        String animConfig = FileUtils.readFileText("/sdcard/sololive/effect/ship3/animation_android.json");
         try{
             GiftAnimEffect giftEffect = new Gson().fromJson(animConfig, GiftAnimEffect.class);
             AnimatorSet animatorSet = GiftAnimParser.parseAnim(giftEffect, mGiftAnimView);

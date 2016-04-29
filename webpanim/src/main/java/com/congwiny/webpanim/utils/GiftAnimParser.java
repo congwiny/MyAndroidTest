@@ -9,10 +9,12 @@ import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import com.congwiny.webpanim.R;
 import com.congwiny.webpanim.newbean.AnimFrame;
 import com.congwiny.webpanim.newbean.AnimItem;
 import com.congwiny.webpanim.newbean.GiftAnimEffect;
@@ -45,15 +47,27 @@ public class GiftAnimParser {
         final ArrayList<SimpleDraweeView> mWebpImages = new ArrayList<>();
         //并行执行的动画
         for (AnimItem animItem : effect.getAnimItem()) {
-
-            SimpleDraweeView animView = new SimpleDraweeView(animContainer.getContext());
-            int scaleType = animItem.getScaleType();
-            switch (scaleType) {
+            View animView = null;
+            switch (animItem.getType()) {
                 case 1:
-                   // animView.getHierarchy().setActualImageScaleType(ScalingUtils.ScaleType.FIT_CENTER);
+                    animView = new SimpleDraweeView(animContainer.getContext());
+                    int scaleType = animItem.getScaleType();
+                    switch (scaleType) {
+                        case 1:
+                            // animView.getHierarchy().setActualImageScaleType(ScalingUtils.ScaleType.FIT_CENTER);
+                            break;
+                        case 2:
+                            ((SimpleDraweeView) animView).getHierarchy().setActualImageScaleType(ScalingUtils.ScaleType.FIT_CENTER);
+                            break;
+                    }
+                    if (prepareBg((SimpleDraweeView) animView, animItem.getName())) {
+                        mWebpImages.add((SimpleDraweeView) animView);
+                    }
+
                     break;
                 case 2:
-                    animView.getHierarchy().setActualImageScaleType(ScalingUtils.ScaleType.FIT_CENTER);
+                    //inflate view
+                    animView = View.inflate(animContainer.getContext(), R.layout.layout_gift_sender, null);
                     break;
             }
 
@@ -63,11 +77,9 @@ public class GiftAnimParser {
             int height = ViewUtils.sizeDp2px(animContainer.getResources(), size.getHeight());
 
             FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(width, height);
-            animContainer.addView(animView,lp);
+            lp.gravity = Gravity.CENTER_HORIZONTAL;
+            animContainer.addView(animView, lp);
 
-            if (prepareBg(animView, animItem.getName())) {
-                mWebpImages.add(animView);
-            }
 
             AnimatorSet wholeFrameAnimSet = new AnimatorSet();
             ArrayList<Animator> frameAnimList = new ArrayList<>();
@@ -95,16 +107,16 @@ public class GiftAnimParser {
             itemAnimList.add(wholeFrameAnimSet);
         }
         rootAnimatorSet.playTogether(itemAnimList);
-       // rootAnimatorSet.setDuration((long) (1000 * effect.getDuration()));
+        // rootAnimatorSet.setDuration((long) (1000 * effect.getDuration()));
         rootAnimatorSet.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
-                Log.e(TAG,"listener onAnimationStart"+mWebpImages.size());
+                Log.e(TAG, "listener onAnimationStart" + mWebpImages.size());
                 for (SimpleDraweeView webpImage : mWebpImages) {
-                    Log.e(TAG,"lis simpledrawee="+webpImage.hashCode());
+                    Log.e(TAG, "lis simpledrawee=" + webpImage.hashCode());
                     Animatable anim = webpImage.getController().getAnimatable();
                     if (anim != null) {
-                        Log.e(TAG,"Animatable webp");
+                        Log.e(TAG, "Animatable webp");
                         anim.start();
                     }
                 }
@@ -131,12 +143,12 @@ public class GiftAnimParser {
     public static boolean prepareBg(SimpleDraweeView bgImage, String bgFileName) {
         if (!TextUtils.isEmpty(bgFileName)) {
             File bgFile = new File("/sdcard/sololive/effect/ship3", bgFileName);
-            Log.e(TAG,"bgFile="+bgFile.getAbsolutePath());
+            Log.e(TAG, "bgFile=" + bgFile.getAbsolutePath());
             if (bgFile.exists()) {
                 if (FileUtils.isWebpFile(bgFileName)) {
                     Log.e(TAG, "isWebp File");
                     ImageRequest localImageRequest = ImageRequestBuilder.newBuilderWithSource(Uri.fromFile(bgFile)).build();
-                    Log.e(TAG,"simpledrawee="+bgImage.hashCode());
+                    Log.e(TAG, "simpledrawee=" + bgImage.hashCode());
                     ControllerListener controllerListener = new BaseControllerListener<ImageInfo>() {
                         @Override
                         public void onFinalImageSet(

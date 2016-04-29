@@ -18,6 +18,9 @@ public class AnimItem {
     @SerializedName("repeat")
     @Expose
     private int repeat;
+    @SerializedName("type")
+    @Expose
+    private int type;
     @SerializedName("size")
     @Expose
     private Size size;
@@ -58,6 +61,14 @@ public class AnimItem {
      */
     public int getRepeat() {
         return repeat;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 
     /**
