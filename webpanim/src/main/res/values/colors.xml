@@ -3,4 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="bg_gift_item_normal">#cc000000</color>
+    <color name="bg_gift_item_pressed">#3334a2ff</color>
+    <color name="bg_gift_item_line_normal">#33ffffff</color>
+    <color name="bg_gift_item_line_pressed">#34a2ff</color>
 </resources>
