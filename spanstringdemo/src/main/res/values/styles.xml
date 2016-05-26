@@ -8,4 +8,27 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="wrap_wrap">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!--<item name="android:lineSpacingExtra">4.0dip</item>
+    这个属性比较坑爹！加了之后Facebook图标就往下移了
+    http://www.bubuko.com/infodetail-785984.html
+    android:lineSpacingExtra属性 在android5.0与之前版本存在的区别
+    -->
+    <style name="room_publicchat_text" parent="@style/wrap_wrap">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#ff9746</item>
+        <item name="android:gravity">left|center</item>
+        <item name="android:paddingTop">2.0dip</item>
+        <item name="android:layout_marginRight">16.0dip</item>
+        <item name="android:singleLine">false</item>
+        <item name="android:shadowColor">#66000000</item>
+        <item name="android:shadowDx">1.0</item>
+        <item name="android:shadowDy">1.0</item>
+        <item name="android:shadowRadius">1.0</item>
+    </style>
+
 </resources>

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SpanStringDemo</string>
+    <dimen name="room_public_chat_iconsize">12.0sp</dimen>
 </resources>
