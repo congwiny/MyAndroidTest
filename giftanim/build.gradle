@@ -27,4 +27,7 @@ dependencies {
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     compile 'com.facebook.fresco:fresco:0.9.0'
+    // this way you only enable BlockCanary in debug package
+     debugCompile 'com.github.moduth:blockcanary-android:1.2.1'
+     releaseCompile 'com.github.moduth:blockcanary-no-op:1.2.1'
 }
