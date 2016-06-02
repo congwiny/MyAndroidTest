@@ -13,6 +13,10 @@
         </activity>
 
         <activity android:name=".CoordinatorActivity">
+
+        </activity>
+
+        <activity android:name=".TabLayoutActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
