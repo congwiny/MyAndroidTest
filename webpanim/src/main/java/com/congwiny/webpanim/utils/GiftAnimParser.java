@@ -76,8 +76,7 @@ public class GiftAnimParser {
             int width = ViewUtils.sizeDp2px(animContainer.getResources(), size.getWidth());
             int height = ViewUtils.sizeDp2px(animContainer.getResources(), size.getHeight());
 
-            FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(width, height);
-            lp.gravity = Gravity.CENTER_HORIZONTAL;
+            FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(width, height, size.getGravity());
             animContainer.addView(animView, lp);
 
 

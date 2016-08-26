@@ -9,6 +9,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -46,7 +47,14 @@ public class MainActivity extends AppCompatActivity {
         //loadWebpImage();
         //goAnim();
 
-       startParseAnim();
+        Log.e(TAG,"gravity="+ Gravity.CENTER);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        startParseAnim();
     }
 
     private void startParseAnim() {

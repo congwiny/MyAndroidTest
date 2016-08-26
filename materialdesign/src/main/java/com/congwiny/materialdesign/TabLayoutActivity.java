@@ -7,7 +7,10 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.congwiny.materialdesign.adapter.MyPagerAdapter;
 
 /**
@@ -19,6 +22,14 @@ public class TabLayoutActivity extends AppCompatActivity {
     ViewPager viewPager;
     TabLayout tabLayout;
 
+    private String [] imageUrl = new String[]{
+            "http://img3.imgtn.bdimg.com/it/u=3456201365,762679504&fm=21&gp=0.jpg",
+            "http://img0.imgtn.bdimg.com/it/u=33319317,3472222185&fm=21&gp=0.jpg",
+            "http://img1.imgtn.bdimg.com/it/u=418916911,863434674&fm=21&gp=0.jpg",
+            "http://img2.imgtn.bdimg.com/it/u=1278014138,1618577766&fm=21&gp=0.jpg",
+            "http://img2.imgtn.bdimg.com/it/u=2368235776,2982096908&fm=21&gp=0.jpg"
+    };
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,17 +38,17 @@ public class TabLayoutActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
 
-        TabLayout.Tab tab1 = tabLayout.newTab().setIcon(R.drawable.emoji_activity_pressed);
-        TabLayout.Tab tab2 = tabLayout.newTab().setIcon(R.drawable.emoji_animal_pressed);
-        TabLayout.Tab tab3 = tabLayout.newTab().setIcon(R.drawable.emoji_flag_pressed);
+        TabLayout.Tab tab1 = tabLayout.newTab();
+        TabLayout.Tab tab2 = tabLayout.newTab();
+        TabLayout.Tab tab3 = tabLayout.newTab();
 
-        TabLayout.Tab tab4 = tabLayout.newTab().setIcon(R.drawable.emoji_food_pressed);
-        TabLayout.Tab tab5 = tabLayout.newTab().setIcon(R.drawable.emoji_history_pressed);
-        TabLayout.Tab tab6 = tabLayout.newTab().setIcon(R.drawable.emoji_objects_pressed);
+        TabLayout.Tab tab4 = tabLayout.newTab();
+        TabLayout.Tab tab5 = tabLayout.newTab();
+        TabLayout.Tab tab6 = tabLayout.newTab();
 
-        TabLayout.Tab tab7 = tabLayout.newTab().setIcon(R.drawable.emoji_smileys_pressed);
-        TabLayout.Tab tab8 = tabLayout.newTab().setIcon(R.drawable.emoji_travel_pressed);
-        TabLayout.Tab tab9 = tabLayout.newTab().setIcon(R.drawable.emoji_symbol_pressed);
+        TabLayout.Tab tab7 = tabLayout.newTab();
+        TabLayout.Tab tab8 = tabLayout.newTab();
+        TabLayout.Tab tab9 = tabLayout.newTab();
 
 
         tabLayout.addTab(tab1);
@@ -45,13 +56,15 @@ public class TabLayoutActivity extends AppCompatActivity {
         tabLayout.addTab(tab3);
         tabLayout.addTab(tab4);
         tabLayout.addTab(tab5);
-        tabLayout.addTab(tab6);
-        tabLayout.addTab(tab7);
-        tabLayout.addTab(tab8);
-        tabLayout.addTab(tab9);
+
 
         for (int i = 0; i < tabLayout.getTabCount(); i++) {
-            tabLayout.getTabAt(i).getIcon().clearColorFilter();
+            View view = View.inflate(this,R.layout.layout_tab,null);
+            //http://c.csdnimg.cn/jifen/images/xunzhang/t/t2.png
+            ImageView iv = (ImageView) view.findViewById(R.id.iv_tab);
+            Glide.with(this).load(imageUrl[i]).into(iv);
+            tabLayout.getTabAt(i).setCustomView(view);
+
         }
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
@@ -64,7 +77,6 @@ public class TabLayoutActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
-                tabLayout.getTabAt(position).getIcon().setColorFilter(getResources().getColor(R.color.colorPrimaryDark), PorterDuff.Mode.SRC_IN);
             }
         };
         viewPager.addOnPageChangeListener(onPageChangeListener);
@@ -78,7 +90,6 @@ public class TabLayoutActivity extends AppCompatActivity {
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-                tab.getIcon().clearColorFilter();
             }
 
             @Override

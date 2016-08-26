@@ -36,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
         final ImageView imageView1 = (ImageView) findViewById(R.id.car_one_back_wheel);
         final RelativeLayout carOne = (RelativeLayout) findViewById(R.id.car_one);
         final HeartView heartView = (HeartView) findViewById(R.id.heart_view);
+
+
+
         giftView.showGiftViewOnce();
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override

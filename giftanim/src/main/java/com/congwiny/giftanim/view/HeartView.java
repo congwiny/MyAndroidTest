@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.Random;
 
 public class HeartView extends SurfaceView implements SurfaceHolder.Callback, Runnable {
+
     private SurfaceHolder mSurfaceHolder;
     private boolean isRun = true;
     private Canvas mCanvas;
@@ -66,7 +67,7 @@ public class HeartView extends SurfaceView implements SurfaceHolder.Callback, Ru
 
             date = new Date();
             try {
-                mCanvas = mSurfaceHolder.lockCanvas(null);
+                mCanvas = mSurfaceHolder.lockCanvas();
                 if (mCanvas != null) {
                     synchronized (mSurfaceHolder) {
                         // 清屏

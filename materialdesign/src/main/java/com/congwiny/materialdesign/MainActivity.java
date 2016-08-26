@@ -38,6 +38,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        int data = getIntent().getIntExtra("datadata", 0);
+        Log.e(TAG, "data==" + data);
+    }
+
     private void initView() {
         mContentTv = (TextView) findViewById(R.id.tv_content);
         mContainer = (CoordinatorLayout) findViewById(R.id.myCoordinatorLayout);
@@ -80,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_edit:
                 return true;
             case R.id.action_share:
-                Snackbar snackBar = Snackbar.make(mContainer,"hello boy",Snackbar.LENGTH_SHORT);
+                Snackbar snackBar = Snackbar.make(mContainer, "hello boy", Snackbar.LENGTH_SHORT);
                 snackBar.getView().setBackgroundColor(getResources().getColor(R.color.colorAccent));
                 snackBar.show();
                 return true;

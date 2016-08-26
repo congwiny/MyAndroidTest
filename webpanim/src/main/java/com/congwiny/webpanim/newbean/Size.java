@@ -12,9 +12,11 @@ public class Size {
     @SerializedName("height")
     @Expose
     private int height;
+    @SerializedName("gravity")
+    private int gravity = 1;
 
     /**
-     * 
+     *
      * @return
      *     The width
      */
@@ -23,7 +25,7 @@ public class Size {
     }
 
     /**
-     * 
+     *
      * @param width
      *     The width
      */
@@ -32,7 +34,7 @@ public class Size {
     }
 
     /**
-     * 
+     *
      * @return
      *     The height
      */
@@ -41,7 +43,7 @@ public class Size {
     }
 
     /**
-     * 
+     *
      * @param height
      *     The height
      */
@@ -49,4 +51,11 @@ public class Size {
         this.height = height;
     }
 
+    public int getGravity() {
+        return gravity;
+    }
+
+    public void setGravity(int gravity) {
+        this.gravity = gravity;
+    }
 }
