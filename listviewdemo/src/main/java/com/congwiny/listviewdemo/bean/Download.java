@@ -5,4 +5,12 @@ package com.congwiny.listviewdemo.bean;
  */
 public class Download {
     public int id;
+    public boolean isComplete;//是否下载完成
+    public String text = "DOWNLOAD";//按钮文字
+    public int progress;
+
+
+    public Download(int id) {
+        this.id = id;
+    }
 }

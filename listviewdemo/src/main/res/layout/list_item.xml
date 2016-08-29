@@ -8,11 +8,11 @@
         android:id="@+id/progress_bar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:progress="80"
+        android:layout_height="25dp"
+        android:layout_gravity="center"
         android:layout_weight="1"
-        android:progressDrawable="@drawable/progress_drawable"
-        android:max="100"/>
+        android:max="100"
+        android:progressDrawable="@drawable/progress_drawable"/>
 
     <Button
         android:id="@+id/btn"
